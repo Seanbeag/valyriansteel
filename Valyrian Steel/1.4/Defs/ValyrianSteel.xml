@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<!-- RESEARCH -->
+
+	<ResearchProjectDef>
+		<defName>ValyrianSmithing</defName>
+		<label>Valyrian Smithing</label>
+		<description>Allows you to create Valyrian steel at a smithy.</description>
+		<baseCost>750</baseCost>
+		<techLevel>Medieval</techLevel>
+		<prerequisites><li>Smithing</li></prerequisites>
+		<researchViewX>2</researchViewX>
+		<researchViewY>4</researchViewY>
+	</ResearchProjectDef>
+
+<!-- Things -->
+
+	<ThingDef ParentName="RockBase">
+		<defName>Mineabledragon</defName>
+		<label>dragonstone ore</label>
+		<description>Rock containing chunks of Dragonglass.</description>
+		<graphicData>
+			<texPath>Things/Building/Linked/RockFlecked_Atlas</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<shaderType>CutoutComplex</shaderType>
+			<color>(46,48,45)</color>
+			<colorTwo>(46,89,35)</colorTwo>
+		</graphicData>
+		<statBases>
+			<MaxHitPoints>2500</MaxHitPoints>
+		</statBases>
+		<building>
+			<isResourceRock>true</isResourceRock>
+			<mineableThing>Dragonglass</mineableThing>
+			<mineableYield>20</mineableYield>
+			<mineableScatterCommonality>0.25</mineableScatterCommonality>
+			<mineableScatterLumpSizeRange>5~7</mineableScatterLumpSizeRange>
+		</building>
+	</ThingDef>
+	
+	<ThingDef ParentName="ResourceBase">
+		<defName>Dragonglass</defName>
+		<label>dragonglass</label>
+		<description>A rare mineral used in the production of Valyrian Steel</description>
+		<graphicData>
+			<texPath>Dragonglass</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<useHitPoints>false</useHitPoints>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Metal_Drop</soundDrop>
+		<statBases>
+			<MarketValue>3</MarketValue>
+			<Mass>0.3</Mass>
+		</statBases>
+		<thingCategories>
+			<li>ResourcesRaw</li>
+		</thingCategories>
+		<deepCommonality>0.25</deepCommonality>
+		<deepCountPerPortion>10</deepCountPerPortion>
+		<deepLumpSizeRange>
+			<min>5</min>
+			<max>15</max>
+		</deepLumpSizeRange>
+	</ThingDef>
+
+	<ThingDef ParentName="ResourceBase">
+		<defName>ValyrianSteel</defName>
+		<label>valyrian steel</label>
+		<description>An alloy of the strongest materials to make a tough metal</description>
+		<graphicData>
+			<texPath>Valyrian</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+			<color>(7,63,3)</color>
+		</graphicData>
+		<soundInteract>Metal_Drop</soundInteract>
+		<soundDrop>Metal_Drop</soundDrop>
+		<useHitPoints>false</useHitPoints>
+		<healthAffectsPrice>false</healthAffectsPrice>
+    <statBases>
+      <MarketValue>5</MarketValue>
+      <Mass>0.25</Mass>
+      <Flammability>0</Flammability>
+      <StuffPower_Armor_Sharp>1.5</StuffPower_Armor_Sharp>
+      <StuffPower_Armor_Blunt>1.2</StuffPower_Armor_Blunt>
+      <StuffPower_Armor_Heat>1.0</StuffPower_Armor_Heat>
+      <StuffPower_Insulation_Cold>4</StuffPower_Insulation_Cold>
+      <StuffPower_Insulation_Heat>2</StuffPower_Insulation_Heat>
+      <SharpDamageMultiplier>1.8</SharpDamageMultiplier>
+      <BluntDamageMultiplier>1.2</BluntDamageMultiplier>
+    </statBases>
+		<thingCategories>
+			<li>ResourcesRaw</li>
+		</thingCategories>
+		<smeltable>true</smeltable>
+		<stuffProps>
+			<categories>
+				<li>Metallic</li>
+			</categories>
+			<commonality>0.001</commonality>
+			<constructEffect>ConstructMetal</constructEffect>
+			<color>(96,95,99)</color>
+			<soundImpactStuff>BulletImpact_Metal</soundImpactStuff>
+			<soundMeleeHitSharp>MeleeHit_Metal_Sharp</soundMeleeHitSharp>
+			<soundMeleeHitBlunt>MeleeHit_Metal_Blunt</soundMeleeHitBlunt>
+			<statOffsets>
+			  <Beauty>5</Beauty>
+			</statOffsets>
+			<stuffAdjective>Valyrian</stuffAdjective>
+			<appearance>Smooth</appearance>
+			<statFactors>
+        <MaxHitPoints>8</MaxHitPoints>
+        <Beauty>2</Beauty>
+        <Flammability>0</Flammability>
+        <WorkToMake>5</WorkToMake>
+				<WorkToBuild>5</WorkToBuild>
+        <DoorOpenSpeed>1</DoorOpenSpeed>
+        <MeleeWeapon_CooldownMultiplier>0.5</MeleeWeapon_CooldownMultiplier>
+			</statFactors>
+		</stuffProps>
+	</ThingDef>
+
+ <!-- RECIPES -->
+
+	<RecipeDef>
+		<defName>Recipe_Valyrian1</defName>
+		<label>make valyrian steel</label>
+		<description>Create valyrian steel using steel and rare materials</description>
+		<jobString>Making valyrian steel</jobString>  
+		<allowMixingIngredients>false</allowMixingIngredients>
+		<skillRequirements>
+		<Crafting>10</Crafting>
+        </skillRequirements>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>20</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Dragonglass</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Plasteel</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>			
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+						<li>Steel</li>
+						<li>Dragonglass</li>
+						<li>Plasteel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<ValyrianSteel>10</ValyrianSteel>
+		</products>
+		<unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+		<workAmount>500</workAmount>
+		<workSkill>Crafting</workSkill>
+		<workSkillLearnFactor>0.75</workSkillLearnFactor>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+		<researchPrerequisite>ValyrianSmithing</researchPrerequisite>
+		<recipeUsers>
+			<li>FueledSmithy</li>
+			<li>ElectricSmithy</li>
+		</recipeUsers>
+	</RecipeDef>
+
+	<RecipeDef>
+		<defName>Recipe_Valyrian2</defName>
+		<label>make valyrian steel x5</label>
+		<description>Create valyrian steel using steel and rare materials in bulk.</description>
+		<jobString>Making valyrian steel.</jobString>  
+		<allowMixingIngredients>false</allowMixingIngredients>
+		<skillRequirements>
+		<Crafting>12</Crafting>
+        </skillRequirements>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>100</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Dragonglass</li>
+					</thingDefs>
+				</filter>
+				<count>25</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Plasteel</li>
+					</thingDefs>
+				</filter>
+				<count>50</count>
+			</li>	
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+						<li>Steel</li>
+						<li>Dragonglass</li>
+						<li>Plasteel</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<ValyrianSteel>50</ValyrianSteel>
+		</products>
+		<unfinishedThingDef>UnfinishedComponent</unfinishedThingDef>
+		<workAmount>2300</workAmount>
+		<workSkill>Crafting</workSkill>
+		<workSkillLearnFactor>0.75</workSkillLearnFactor>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+		<researchPrerequisite>ValyrianSmithing</researchPrerequisite>
+		<recipeUsers>
+			<li>FueledSmithy</li>
+			<li>ElectricSmithy</li>
+		</recipeUsers>
+	</RecipeDef>
+
+
+</Defs> 

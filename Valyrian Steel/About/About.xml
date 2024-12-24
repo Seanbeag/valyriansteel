@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+
+    <name>Valyrian Steel</name>
+
+    <author>Seanbeag</author>
+
+    <supportedVersions>
+		<li>1.4</li>
+		<li>1.5</li>
+	</supportedVersions>
+	
+	<packageId>Seanbeag.Valyrian</packageId>
+
+    <description>Adds Dragonglass, Valyrian Steel and recipes to the game</description>
+
+	<incompatibleWith>
+	</incompatibleWith>
+	
+</ModMetaData>
